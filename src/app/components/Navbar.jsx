@@ -81,12 +81,12 @@ const Navbar = () => {
   };
 
   const navLinks = [
-    { label: "Home", href: "#" },
+    { label: "Home", href: "/" },
     { label: "Profiles", href: "/profileFriends" },
     { label: "Projects", href: "/Projects" },
-    { label: "Apply", href: "#" },
-    { label: "Forum", href: "#" },
-    { label: "Contact us", href: "#", special: true },
+    { label: "Apply", href: "/apply" },
+    { label: "Forum", href: "/forum" },
+    { label: "Contact us", href: "/contact", special: true },
   ];
 
   return (

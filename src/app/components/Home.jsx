@@ -11,7 +11,7 @@ const Home = ({ children }) => {
   return (
     <section className="min-h-screen flex flex-col bg-black text-white relative overflow-hidden">
       {/* Home Coming Soon */}
-      <HomeComingSoon />
+       {/* <HomeComingSoon /> */}
       
       {/* HERO SECTION */}
       <main className="flex-1 flex flex-col sm:flex-row items-center sm:items-start justify-between px-4 sm:px-16 relative z-10 min-h-[600px] sm:min-h-[700px]">
