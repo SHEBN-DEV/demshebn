@@ -21,7 +21,7 @@ const SignUp = () => {
 
     const router = useRouter();
 
- const verifyWithDidit = async ({ email }) => {
+const verifyWithDidit = async ({ email }) => {
   return new Promise(async (resolve, reject) => {
     try {
       const res = await fetch("/api/didit-session", {
@@ -53,31 +53,35 @@ const SignUp = () => {
 
       document.body.appendChild(modal);
 
-      const handler = async(event) => {
+      const handler = async (event) => {
         if (event.data?.diditVerification) {
           window.removeEventListener("message", handler);
-      const sessionId = event.data.diditVerification.sessionId;
 
-    const res = await fetch("/api/didit-session-result", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ sessionId })
-    });
+          const sessionId = event.data.diditVerification.sessionId;
 
-    const result = await res.json();
+          const res2 = await fetch("/api/didit-session-result", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ sessionId })
+          });
 
-    modal.remove();
-    resolve(result.data);
+          const result = await res2.json();
+
+          modal.remove();
+          resolve(result.data);
+        }
       };
 
       window.addEventListener("message", handler);
+
     } catch (err) {
       reject(err);
     }
   });
 };
+
 
     const handleSignUpSubmit = async (data) => {
         const { FullName, UserName, email, Password } = data;
