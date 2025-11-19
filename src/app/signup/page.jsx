@@ -21,46 +21,63 @@ const SignUp = () => {
 
     const router = useRouter();
 
-    const verifyWithDidit = async ({ email }) => {
-        return new Promise(async (resolve, reject) => {
-            try {
-                const res = await fetch("/api/didit-session", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ email })
-                });
-                const data = await res.json();
-                if (!res.ok || !data.url) {
-                    throw new Error("No se pudo crear la sesión Didit");
-                }
-                const iframe = document.createElement("iframe");
-                iframe.src = data.url;
-                iframe.style.width = "100%";
-                iframe.style.height = "600px";
-                iframe.style.border = "none";
-                const modal = document.createElement("div");
-                modal.style.position = "fixed";
-                modal.style.top = "0";
-                modal.style.left = "0";
-                modal.style.width = "100%";
-                modal.style.height = "100%";
-                modal.style.background = "rgba(0,0,0,0.8)";
-                modal.style.display = "flex";
-                modal.style.justifyContent = "center";
-                modal.style.alignItems = "center";
-                modal.appendChild(iframe);
-                document.body.appendChild(modal);
-                window.addEventListener("message", (event) => {
-                    if (event.data?.diditVerification) {
-                        modal.remove();
-                        resolve(event.data.diditVerification);
-                    }
-                });
-            } catch (err) {
-                reject(err);
-            }
-        });
-    };
+ const verifyWithDidit = async ({ email }) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const res = await fetch("/api/didit-session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email })
+      });
+
+      const data = await res.json();
+      if (!res.ok || !data.url) return reject("Error creando sesión Didit");
+
+      const iframe = document.createElement("iframe");
+      iframe.src = data.url;
+      iframe.style.width = "100%";
+      iframe.style.height = "600px";
+      iframe.style.border = "none";
+
+      const modal = document.createElement("div");
+      modal.style.position = "fixed";
+      modal.style.top = "0";
+      modal.style.left = "0";
+      modal.style.width = "100%";
+      modal.style.height = "100%";
+      modal.style.background = "rgba(0,0,0,0.8)";
+      modal.style.display = "flex";
+      modal.style.justifyContent = "center";
+      modal.style.alignItems = "center";
+      modal.appendChild(iframe);
+
+      document.body.appendChild(modal);
+
+      const handler = async(event) => {
+        if (event.data?.diditVerification) {
+          window.removeEventListener("message", handler);
+      const sessionId = event.data.diditVerification.sessionId;
+
+    const res = await fetch("/api/didit-session-result", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ sessionId })
+    });
+
+    const result = await res.json();
+
+    modal.remove();
+    resolve(result.data);
+      };
+
+      window.addEventListener("message", handler);
+    } catch (err) {
+      reject(err);
+    }
+  });
+};
 
     const handleSignUpSubmit = async (data) => {
         const { FullName, UserName, email, Password } = data;
