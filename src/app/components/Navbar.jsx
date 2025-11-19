@@ -94,7 +94,7 @@ const Navbar = () => {
       
       <div className="flex items-center gap-8 w-full sm:w-auto justify-between sm:justify-start">
         <img 
-          src="/images/home/logo 1.png" 
+          src="/images/home/LogoRosa.png" 
           alt="SHEBN Logo" 
           className="h-12 w-auto select-none" 
           draggable="false"
