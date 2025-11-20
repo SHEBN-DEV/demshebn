@@ -1,47 +1,49 @@
 import React from "react";
 import Sidebar from "../components/Sidebar";
-import Discover from "../components/Discover";
-import Invitation from "../components/Invitation";
-import ButtonProfile from "../components/ButtonProfile";
 import OnlineFriendsList from "../components/OnlineFriendsList";
 import FriendCard from "../components/FriendCard";
 import TrendingCard from "../components/TrendingCard";
 
 
-const profileFriends = () => {
+const ProfileFriends = () => {
 
     return(
-        <div className="min-h-screen flex justify-center bg-[#1a1718] text-white">
+        <div className="min-h-screen flex flex-col lg:flex-row bg-[#0a0a0a] text-white">
             
             {/* Bloque 1 */}
-            <Sidebar />
+            <div className="w-full lg:w-1/5">
+                <Sidebar />
+            </div>
+            
 
             {/* Bloque 2 */}
-            <div className="w-full md:w-4/5 flex flex-col gap-8 px-8 md:px-4">
-                {/* Discover 
-                <Discover />*/}
-                
-                {/*
-                <Invitation /> */}
-
-                {/* Button 
-                <ButtonProfile /> */}
+            <div className="w-full lg:w-3/5 flex flex-col gap-6 px-4 sm:px-6 lg:px-8 py-6">
 
                 {/* ---Nuevo Bloque--- */}
-                <p className="text-4xl font-bold pl-10">Find a Friend</p>
-                    {/* Carrusel Friends */}
-                    <FriendCard />                
+                <div className="px-2 sm:px-4">
+                    <p className="text-xl sm:text-2xl font-bold">Find a Friend</p>
+                </div>
 
-                <p className="text-4xl font-bold pl-10 pt-6">Trending</p>
+                {/* Carrusel Friends */}
+                <div className="px-2 sm:px-4">
+                    <FriendCard />
+                </div>
+                
+                <div className="px-2 sm:px-4 pt-2">
+                    <p className="text-xl sm:text-2xl font-bold">Trending</p>
+                </div>
+                
+                <div className="px-2 sm:px-4">
                     <TrendingCard />
-
+                </div>
             </div>
 
             {/* Bloque 3 */}
-            <OnlineFriendsList />
-            
+            <div className="w-full lg:w-1/5">
+                <OnlineFriendsList />
+            </div>
         </div>
     );
 };
 
-export default profileFriends;
+export default ProfileFriends;
