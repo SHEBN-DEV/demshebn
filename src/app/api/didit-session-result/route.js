@@ -9,7 +9,7 @@ export async function POST(req) {
     }
 
     const response = await fetch(
-      `https://verification.didit.me/v2/session/${sessionId}`,
+      `https://verification.didit.me/v2/session/${sessionId}/decision/`,
       {
         method: "GET",
         headers: {

@@ -91,7 +91,8 @@ const verifyWithDidit = async ({ email }) => {
             console.log("🚀 Step 1: Starting authentication...");
 
             const verification = await verifyWithDidit(data);
-            if (!verification.success || verification.gender?.toLowerCase() !== "female") {
+            console.log({verification});
+            if (verification.id_verification?.gender?.toLowerCase() !== "F") {
                 setToastMessage("Solo se permiten registros de mujeres.");
                 setToastType("error");
                 setShowToast(true);
