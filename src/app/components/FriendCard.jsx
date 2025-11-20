@@ -1,13 +1,43 @@
 "use client";
 
-import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { IoIosArrowDroprightCircle, IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+
+// Hook personalizado para detectar tamaño de pantalla
+const useScreenSize = () => {
+    const [screenSize, setScreenSize] = useState({
+      width: typeof window !== 'undefined' ? window.innerWidth : 0,
+      height: typeof window !== 'undefined' ? window.innerHeight : 0,
+    });
+  
+    useEffect(() => {
+      const handleResize = () => {
+        setScreenSize({
+          width: window.innerWidth,
+          height: window.innerHeight,
+        });
+      };
+  
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }, []);
+  
+    return screenSize;
+};
 
 const FriendCard = () => {
 
     const [currentIndex, setCurrentIndex] = useState(0);
-    const friendsPerPage = 4;
+    const screenSize = useScreenSize();
+
+    // Calcula friendsPerPage dinámicamente según el ancho de pantalla
+    const getFriendsPerPage = () => {
+        if (screenSize.width < 640) return 2;    // móvil: 2 amigos
+        if (screenSize.width < 1024) return 3;   // tablet: 3 amigos
+        return 4;                                // desktop: 4 amigos
+    };
+
+    const friendsPerPage = getFriendsPerPage();
     
     /* Lista de amigos prueba*/
     const friends = [
@@ -21,70 +51,68 @@ const FriendCard = () => {
         { id:'8', name: 'Journalist8', role: 'Journalist', status: '30 contents', image: '/images/profile/woman.jpg' },
         { id:'9', name: 'Daniela Beyo9', role: 'Developer', status: 'Open to door', image: '/images/profile/woman.jpg' },
         { id:'10', name: 'Selena Lo10', role: 'Marketing', status: 'CMO VueWallet', image: '/images/profile/woman.jpg' },
-
     ];
 
-    //Calcula amigos visibles
+    // Calcula amigos visibles
     const visibleFriends = friends.slice(currentIndex, currentIndex + friendsPerPage);
 
-    //verifica si hay mas amigos mas alla de la pagina actual
+    // Verifica si hay más amigos
     const hasNext = currentIndex + friendsPerPage < friends.length;
-    //verifica si hay amigos atras
     const hasPrev = currentIndex > 0;
 
     const handleNext = () => {
         if (hasNext) {
-            setCurrentIndex(currentIndex + friendsPerPage);
+        setCurrentIndex(currentIndex + friendsPerPage);
         }
     };
 
     const handlePrev = () => {
         if (hasPrev) {
-            setCurrentIndex(currentIndex - friendsPerPage);
+        setCurrentIndex(currentIndex - friendsPerPage);
         }
     };
 
     return (
-        <div className="relative w-full bg-black rounded-xl p-6 shadow-gray-400 shadow-md">
+        <div className="relative w-full bg-black rounded-xl p-4 md:p-6 shadow-gray-400 shadow-md">
 
             {/* Botón Atrás - solo visible cuando hay amigos atrás */}
             {hasPrev && (
             <button 
                 onClick={handlePrev}
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-800 hover:bg-gray-700 rounded-full p-2 transition-colors">
-                <IoIosArrowBack className="text-white size-6" />
+                className="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 bg-gray-800 hover:bg-gray-700 rounded-full p-1 md:p-2 transition-colors z-10">
+                <IoIosArrowBack className="text-white size-5 md:size-6" />
             </button>
             )}
             
-            {/* Grid de amigos - solo muestra 4 amigos por pagina */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+            {/* Grid responsive que se adapta al layout de la página */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
                 {visibleFriends.map(friend => (
                     <div 
                         key={friend.id}
-                        className="flex flex-col items-center">
+                        className="flex flex-col items-center text-center">
                         
                         {/* Imagen principal */}
                         <img 
                             src={friend.image} 
                             alt={friend.name}
-                            className="size-32 rounded-full mb-4 object-cover"
+                            className="size-20 md:size-24 rounded-full mb-3 md:mb-4 object-cover"
                             loading="lazy"
                         />
 
                         {/* Información */}
-                        <div className="flex items-center mb-2">
+                        <div className="flex items-center justify-center mb-2 w-full">
                             <img 
                                 src={friend.image} 
                                 alt={`avatar ${friend.name}`}
-                                className="size-5 rounded-full object-cover"
+                                className="size-4 md:size-5 rounded-full object-cover flex-shrink-0"
                                 loading="lazy"
                             />
-                            <p className="text-sm font-semibold pl-2">{friend.name}</p>
+                            <p className="text-xs sm:text-sm font-semibold pl-2 truncate">{friend.name}</p>
                         </div>
-                        <p className="text-xs mb-2">{friend.role} + {friend.status}</p>
+                        <p className="text-xs mb-2 px-1">{friend.role} + {friend.status}</p>
                         
                         {/* Botón ver perfil*/}
-                        <button className="flex items-center w-fit hover:opacity-80 transition-opacity group/profile">
+                        <button className="flex items-center justify-center w-fit hover:opacity-80 transition-opacity group/profile mx-auto">
                             <p className="text-xs text-[#ff29d7] pr-1">See Profile</p>
                             <IoIosArrowDroprightCircle className="fill-[#ff29d7] size-4 group-hover/profile:translate-x-0.5 transition-transform"/> 
                         </button>
@@ -96,17 +124,12 @@ const FriendCard = () => {
             {hasNext && (
             <button 
                 onClick={handleNext}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gray-800 hover:bg-gray-700 rounded-full p-2 transition-colors">
-                <IoIosArrowForward className="text-white size-6" />
+                className="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 bg-gray-800 hover:bg-gray-700 rounded-full p-1 md:p-2 transition-colors z-10">
+                <IoIosArrowForward className="text-white size-5 md:size-6" />
             </button>
             )}
         </div>
-
-        
-
     );
-
-
 };
 
 export default FriendCard;

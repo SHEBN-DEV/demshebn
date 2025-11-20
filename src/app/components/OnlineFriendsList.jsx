@@ -19,7 +19,7 @@ const OnlineFriendsList =() => {
 
     return (
     
-        <div className="w-full md:w-1/3 flex flex-col justify-center gap-4 text-white">
+        <div className="w-full flex flex-col gap-4 text-white p-4">
             <p className="text-lg font-semibold">Online Friends</p>
             
             {friends.length === 0 ? (  
@@ -27,29 +27,29 @@ const OnlineFriendsList =() => {
                 No friends online at the moment.
             </div>
             ) : (
-            <div className="w-5/6 flex flex-col justify-center gap-7 py-4 px-3 gradient-border2">
+            <div className="w-full flex flex-col justify-center gap-6 py-4 px-2 gradient-border2">
                 {visibleFriends.map((friend, i) => (
                     <React.Fragment key={i}>
                         <div className="flex items-center justify-between">
-                            <img className="w-14 h-14 rounded-full" src={friend.image} alt={friend.name} />
-                            <div className="flex flex-col">
-                                <p className="text-lg font-semibold">{friend.name}</p>
-                                <p className="text-base">{friend.role}</p>
+                            <img className="w-10 h-10 lg:w-12 lg:h-12 rounded-full" src={friend.image} alt={friend.name} />
+                            <div className="flex flex-col flex-1 min-w-0 px-2">
+                                <p className="text-sm lg:text-base font-semibold truncate">{friend.name}</p>
+                                <p className="text-xs lg:text-sm truncate">{friend.role}</p>
                             </div>
-                            <svg className="size-6 fill-[#ff29d7] cursor-pointer hover:fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <svg className="size-5 lg:size-6 fill-[#ff29d7] cursor-pointer hover:fill-white flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                                 <path d="M0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM241 377c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l87-87-87-87c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0L345 239c9.4 9.4 9.4 24.6 0 33.9L241 377z"/>
                             </svg>
                         </div>
 
                         {i < visibleFriends.length - 1 && (
-                                <div className="w-5/6 border border-t border-gray-300 mx-auto" />
+                                <div className="w-full border-t border-gray-300 mx-auto" />
                                 )}
                     </React.Fragment> 
                 ))}
 
                 {!showAll && (
                     <div className="flex justify-center">
-                        <p className="text-lg font-semibold text-[#ff29d7] cursor-pointer hover:underline"
+                        <p className="text-sm lg:text-base font-semibold text-[#ff29d7] cursor-pointer hover:underline"
                         onClick={() => setShowAll(true)}>
                             Discover all
                         </p>

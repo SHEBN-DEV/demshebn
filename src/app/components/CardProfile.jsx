@@ -47,7 +47,7 @@ const CardProfile = () => {
             .eq("user_id", user.id)
             .single();
     
-            if(error0) {
+            if(editError) {
                 console.error("Error fetching edit_profile:", editError);
             }else {
                 setProfileEdit(editData);

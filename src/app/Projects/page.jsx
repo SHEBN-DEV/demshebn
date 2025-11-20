@@ -10,26 +10,26 @@ import CategoryGrid from "../components/CategoryGrid";
 const Projects = () => {
 
     return(
-        <div className="min-h-screen flex justify-center bg-[#1a1718] text-white">
+        <div className="min-h-screen flex flex-col lg:flex-row bg-[#1a1718] text-white">
             {/* bloque 1 */}
-            <Sidebar />
+            <div className="w-full lg:w-1/5">
+                <Sidebar />
+            </div>
 
             {/* bloque 2 */}
-            <div className="md:w-full py-4">
-                <div className="w-5/6">
+            <div className="flex-1 w-full py-2">
+                <div className="w-full px-4 md:px-6 lg:px-0 xl:w-5/6 mx-auto">
                     <Discover />
-                </div>
-                <p className="text-2xl font-bold my-4">Trending</p>
-                <div className="w-full">
+                    <p className="text-2xl font-bold my-4 mt-2 lg:mt-4">Trending</p>
                     <TrendingCards />
-                    <CategoryGrid />
-
                 </div>
-
+                
+                <div className="mt-6 lg:mt-8">
+                    <CategoryGrid />
+                </div>
             </div>
         </div>
     );
-
 };
 
 export default Projects;

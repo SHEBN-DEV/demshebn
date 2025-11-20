@@ -146,7 +146,10 @@ const Messages = () => {
   return (
     <div className=" flex justify-center bg-[#1a1718] text-white">
       {/* Sidebar */}
-      <Sidebar />
+      <div className="w-full lg:w-1/5">
+        <Sidebar />
+      </div>
+      
 
       {/* Chat principal */}
       <div className="flex flex-1">
