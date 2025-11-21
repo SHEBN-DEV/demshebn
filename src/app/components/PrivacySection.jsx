@@ -1,6 +1,6 @@
 import InputField from "./inputField";
 
-const PrivacySection = ({ title, value, showForm, toggleForm, fields, errors, register }) => (
+const PrivacySection = ({ title, value, showForm, toggleForm, fields, errors, register, onSubmit }) => (
     <div className="bg-[#1C1D20] rounded-2xl p-6 space-y-2">
       {!showForm ? (
         <>
@@ -9,7 +9,7 @@ const PrivacySection = ({ title, value, showForm, toggleForm, fields, errors, re
           <button
             type="button"
             onClick={toggleForm}
-            className="text-lg hover:text-[#ff29d7] hover:underline transition-colors duration-200 cursor-pointer"
+            className="px-6 py-3 border hover:bg-[#ff29d7] border-white rounded-3xl text-sm font-medium text-white transition-colors duration-200 cursor-pointer"
           >
             CHANGE {title.toUpperCase()}
           </button>
@@ -28,8 +28,9 @@ const PrivacySection = ({ title, value, showForm, toggleForm, fields, errors, re
             />
           ))}
           <button
-            type="submit"
-            className="text-lg hover:text-[#ff29d7] hover:underline transition-colors duration-200 cursor-pointer"
+            type="button"
+            onClick={onSubmit}
+            className="px-6 py-3 border hover:bg-[#ff29d7] border-white rounded-3xl text-sm font-medium text-white transition-colors duration-200 cursor-pointer"
           >
             SAVE {title.toUpperCase()}
           </button>

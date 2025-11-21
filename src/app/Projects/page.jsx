@@ -1,10 +1,10 @@
-
+"use client"
 import React from "react";
 import Sidebar from "../components/Sidebar";
 import Discover from "../components/Discover";
 import TrendingCards from "../components/TrendingCards";
 import CategoryGrid from "../components/CategoryGrid";
-
+import withAuth from "../components/withAuth";
 
 
 const Projects = () => {
@@ -32,4 +32,4 @@ const Projects = () => {
     );
 };
 
-export default Projects;
+export default withAuth(Projects);

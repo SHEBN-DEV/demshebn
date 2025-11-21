@@ -29,8 +29,11 @@ const editProfile = () => {
         <div className="min-h-screen bg-black text-white">
                         
             <div className="flex">
-                {/* Sidebar izquierdo */}
-                <Sidebar />
+                {/* Sidebar */}
+                <div className="w-full lg:w-1/5">
+                    <Sidebar />
+                </div>
+                
 
                 {/* Contenido principal */}
                 <div className="w-full">

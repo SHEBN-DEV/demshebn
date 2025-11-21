@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Sidebar from "../components/Sidebar";
 import { supabase } from "../SupabaseClient";
+import withAuth from "../components/withAuth";
 
 const Messages = () => {
   const [users, setUsers] = useState([]);
@@ -246,4 +247,4 @@ const Messages = () => {
   );
 };
 
-export default Messages;
+export default withAuth(Messages);

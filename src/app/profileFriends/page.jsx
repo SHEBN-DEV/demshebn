@@ -1,9 +1,10 @@
+"use client"
 import React from "react";
 import Sidebar from "../components/Sidebar";
 import OnlineFriendsList from "../components/OnlineFriendsList";
 import FriendCard from "../components/FriendCard";
 import TrendingCard from "../components/TrendingCard";
-
+import withAuth from "../components/withAuth";
 
 const ProfileFriends = () => {
 
@@ -46,4 +47,4 @@ const ProfileFriends = () => {
     );
 };
 
-export default ProfileFriends;
+export default withAuth(ProfileFriends);
