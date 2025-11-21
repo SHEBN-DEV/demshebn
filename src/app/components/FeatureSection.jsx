@@ -45,15 +45,29 @@ const FeatureSection = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
         {/* Header */}
         <div className="text-left max-w-md flex flex-col items-start">
-          <h2 className="text-3xl sm:text-4xl font-medium text-white mb-5 sm:mb-7 tracking-normal">
+          <h2 className="text-3xl sm:text-4xl font-medium text-white text-center mb-5 sm:mb-7 tracking-normal">
             Step into the world of
           </h2>
+          {/* 
           <img 
             src="/images/home/SBN.png" 
             alt="SHEBN Logo" 
             className="h-20 sm:h-50 w-auto" 
             loading="lazy"
-          />
+          />*/}
+          {/* Texto SHEBN con efecto de superposición */}
+          <div class="relative">
+              <h3 class="text-7xl md:text-9xl font-black text-shadow-3d letter-overlap">
+                  <span class="bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent">
+                      SHEBN
+                  </span>
+              </h3>
+              
+              {/* Efecto de sombra detrás  */}
+              <h3 class="text-7xl md:text-9xl font-black absolute top-2 left-2 -z-10 letter-overlap opacity-40">
+                  <span class="text-gray-800">SHEBN</span>
+              </h3>
+          </div>
         </div>
 
         {/* Cards with protruding sidebar */}
