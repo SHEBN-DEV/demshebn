@@ -102,14 +102,14 @@ const MyProfile = () => {
                 <div className="flex flex-col gap-10 p-4 md:py-10">
                     <div className="">
                         <p className="text-lg font-semibold">Experience</p>
-                        <p className="text-base">{profile?.experience || "Experiencia no disponible"}</p>
+                        <p className="text-base">{profile?.experience || "Your experience matters, tell us about it!"}</p>
                     </div>
                     <div className="w-5/6 border-b-2 border-gray-500 mx-auto"></div>
                     <div className="flex items-start justify-between">
                         <div className="w-1/2 flex flex-col gap-2">
                             <p className="text-lg font-semibold">About Me</p>
                             <p className="text-base">
-                                {profile?.about || "Información no disponible"}
+                                {profile?.about || "Your story matters, share it!"}
                             </p>
                             <a href="#" className="text-lg font-bold text-[#ff29d7] pt-6 hover:underline">Read More</a>
                         </div>
@@ -117,11 +117,11 @@ const MyProfile = () => {
                             <p className="text-lg font-semibold">Location</p>
                             <div className="flex items-center gap-x-2">
                                 <img className="w-10 h-10 rounded-full" src="/images/profile/fondo-inferior.png" alt="Pais" />
-                                <p>{profile?.location || "Ubicación no disponible"}</p>
+                                <p>{profile?.location || "Where are you located?"}</p>
                             </div>
                             <p className="text-lg font-semibold pt-4">Portfolio</p>
                             <a href={profile?.portfolio_url || "#"} className="text-base hover:text-[#ff29d7]">
-                                {profile?.portfolio_url || "Portfolio no disponible"}
+                                {profile?.portfolio_url || "Portfolio not available"}
                             </a>
                         </div>
                     </div>

@@ -98,25 +98,28 @@ const EditInfo = () => {
 
 
     return(
-        <div className="max-h-screen bg-black text-white">
-                        
-            <div className="flex">
-                {/* Sidebar izquierdo */}
-                <Sidebar />
+        <div className="min-h-screen bg-black text-white">
+            <div className="flex flex-col lg:flex-row">
+                {/* Sidebar - se coloca arriba en móvil, a la izquierda en desktop */}
+                <div className="w-full lg:w-1/5">
+                    <Sidebar />
+                </div>
 
                 {/* Contenido principal */}
-                <div className="w-full">
-                    {/* Fondo degradado */}
-                    <div className="w-full h-45 bg-gradient-to-r from-[#090909] to-[#ff29d7]"></div>
+                <div className="w-full lg:w-4/5">
+                    {/* Fondo degradado - altura ajustada para móvil */}
+                    <div className="w-full h-32 lg:h-45 bg-gradient-to-r from-[#090909] to-[#ff29d7]"></div>
                     
-                    {/* Contenido del perfil */}
-                    <div className="flex -mt-16">
+                    {/* Contenido del perfil - estructura reorganizada para móvil */}
+                    <div className="flex flex-col lg:flex-row lg:-mt-16 px-4 lg:px-0">
                         
-                        {/* Card del perfil */}
-                        <CardProfile />
-                       
-                        {/* Secciones de información */}
-                        <div className="flex-1 flex flex-col items-center my-20 space-y-6">
+                        {/* Card del perfil - centrado en móvil */}
+                        <div className="flex justify-center lg:block lg:w-1/3 xl:w-1/4">
+                            <CardProfile />
+                        </div>
+                    
+                        {/* Secciones de información - ancho completo en móvil */}
+                        <div className="flex-1 flex flex-col items-center my-8 lg:my-20 space-y-6 w-full lg:w-2/3 xl:w-3/4">
                             <ProfileSection
                                 title="Experience"
                                 name="experience"

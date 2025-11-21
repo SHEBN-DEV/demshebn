@@ -27,50 +27,65 @@ const editProfile = () => {
 
     return(
         <div className="min-h-screen bg-black text-white">
-                        
-            <div className="flex">
+            <div className="flex flex-col lg:flex-row">
                 {/* Sidebar */}
                 <div className="w-full lg:w-1/5">
                     <Sidebar />
                 </div>
                 
-
                 {/* Contenido principal */}
-                <div className="w-full">
+                <div className="w-full lg:w-4/5">
                     {/* Fondo degradado */}
-                    <div className="w-full h-45 bg-gradient-to-r from-[#090909] to-[#ff29d7]"></div>
+                    <div className="w-full h-32 lg:h-45 bg-gradient-to-r from-[#090909] to-[#ff29d7]"></div>
                     
                     {/* Contenido del perfil */}
-                    <div className="flex -mt-16">
+                    <div className="flex flex-col lg:flex-row px-4 lg:px-0 -mt-8 lg:-mt-16">
                         {/* Card del perfil */}
-                        
-                        <CardProfile />
+                        <div className="w-full lg:w-1/3 xl:w-1/4 mb-6 lg:mb-0 flex justify-center lg:block">
+                            <CardProfile />
+                        </div>
                         
                         {/* Secciones a editar */}
-                        <div className="flex-1 flex flex-col items-center space-y-6">
-                            <div className="w-5/6 bg-black rounded-xl"> 
-                                <div className="flex items-center justify-around border-b-1 border-gray-500">
+                        <div className="w-full flex flex-col items-center space-y-6 lg:pl-8">
+                            <div className="w-full lg:w-5/6 bg-black rounded-xl"> 
+                                {/* Navegación de pestañas */}
+                                <div className="flex flex-col sm:flex-row items-center justify-around border-b border-gray-500">
                                     <button 
                                         onClick={() => setActiveSection('personal')}
-                                        className={`cursor-pointer ${activeSection === 'personal' ? 'text-[#ff29d7] border-b-1 border-[#ff29d7] py-4' : 'text-white py-4'}`}
+                                        className={`cursor-pointer w-full sm:w-auto px-4 py-3 text-center ${
+                                            activeSection === 'personal' 
+                                            ? 'text-[#ff29d7] border-b-2 border-[#ff29d7]' 
+                                            : 'text-white hover:text-gray-300'
+                                        }`}
                                     >
                                         Personal Data
                                     </button>
                                     <button 
                                         onClick={() => setActiveSection('documents')}
-                                        className={`cursor-pointer ${activeSection === 'documents' ? 'text-[#ff29d7] border-b-1 border-[#ff29d7] py-4' : 'text-white py-4'}`}
+                                        className={`cursor-pointer w-full sm:w-auto px-4 py-3 text-center ${
+                                            activeSection === 'documents' 
+                                            ? 'text-[#ff29d7] border-b-2 border-[#ff29d7]' 
+                                            : 'text-white hover:text-gray-300'
+                                        }`}
                                     >
                                         Documents
                                     </button>
                                     <button 
                                         onClick={() => setActiveSection('privacy')}
-                                        className={`cursor-pointer ${activeSection === 'privacy' ? 'text-[#ff29d7] border-b-1 border-[#ff29d7] py-4' : 'text-white py-4'}`}
+                                        className={`cursor-pointer w-full sm:w-auto px-4 py-3 text-center ${
+                                            activeSection === 'privacy' 
+                                            ? 'text-[#ff29d7] border-b-2 border-[#ff29d7]' 
+                                            : 'text-white hover:text-gray-300'
+                                        }`}
                                     >
                                         Privacy
                                     </button>
                                 </div>
 
-                                {renderSection()}
+                                {/* Contenido de la sección */}
+                                <div className="p-4 lg:p-6">
+                                    {renderSection()}
+                                </div>
                             </div>
                         </div>
                     </div>
