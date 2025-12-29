@@ -1,4 +1,4 @@
-"use client"
+/*"use client"
 
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
@@ -36,4 +36,4 @@ const withAuth = (WrappedComponent) => {
   }
 }
 
-export default withAuth
+export default withAuth */
