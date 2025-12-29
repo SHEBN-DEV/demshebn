@@ -114,16 +114,24 @@ const Navbar = () => {
       
       <div className="flex space-x-4 items-center">
         {user && profile ? (
-          <>
-          <img className="relative left-6 w-10 h-10 rounded-full" src="/images/profile/woman.jpg" alt={profile.user_name} />
-          <div className="bg-[#4B4242] rounded-r-lg px-6 py-1 text-sm font-semibold">
-            {profile?.user_name}
-            <select onChange={(e) => handleOptionClick(e.target.value)} className="bg-[#4B4242] text-white w-6 outline-2 outline-offset-0 outline-transparent" defaultValue="">
-              <option value="" disabled></option>
-              <option value="logout">LOG OUT</option>
-            </select>
+           <div className="flex items-center">
+              <img 
+                className="relative left-6 w-10 h-10 rounded-full" 
+                src="/images/profile/woman.jpg" 
+                alt={profile.user_name} 
+              />
+              <div className="bg-[#4B4242] rounded-r-lg px-6 py-1 text-sm font-semibold">
+                {profile?.user_name}
+                <select 
+                  onChange={(e) => onOptionSelect(e.target.value)} 
+                  className="bg-[#4B4242] text-white w-6 outline-2 outline-offset-0 outline-transparent" 
+                  defaultValue=""
+                >
+                  <option value="" disabled></option>
+                  <option value="logout">LOG OUT</option>
+                </select>
+              </div>
           </div>
-          </>
         ) : (
           <>
             <Link href="/login">

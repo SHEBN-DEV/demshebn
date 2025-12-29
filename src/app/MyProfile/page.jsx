@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "../SupabaseClient";
-import withAuth from "../components/withAuth";
+//import withAuth from "../components/withAuth";
 import Sidebar from "../components/Sidebar";
 
 const MyProfile = () => {
@@ -131,4 +131,4 @@ const MyProfile = () => {
     );
 };
 
-export default withAuth(MyProfile);
+export default MyProfile;

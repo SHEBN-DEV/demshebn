@@ -4,7 +4,7 @@ import Sidebar from "../components/Sidebar";
 import Discover from "../components/Discover";
 import TrendingCards from "../components/TrendingCards";
 import CategoryGrid from "../components/CategoryGrid";
-import withAuth from "../components/withAuth";
+//import withAuth from "../components/withAuth";
 
 
 const Projects = () => {
@@ -32,4 +32,4 @@ const Projects = () => {
     );
 };
 
-export default withAuth(Projects);
+export default Projects;
