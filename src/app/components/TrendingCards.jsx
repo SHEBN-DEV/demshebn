@@ -41,12 +41,12 @@ const TrendingCards = () => {
   };
 
   return (
-    <div className="flex flex-col p-6">
+    <div className="flex flex-col">
       
       <a href='#' className="w-5/6 flex justify-end text-gray-500 text-lg font-semibold hover:text-[#FF29D7]">More</a>
       <div className='flex'>
         {/* Card */}
-        <div className="w-5/6 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-6">
           {cards.map((card, index) => (
             <div 
               key={index} 

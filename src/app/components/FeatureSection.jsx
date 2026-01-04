@@ -48,23 +48,16 @@ const FeatureSection = () => {
           <h2 className="text-3xl sm:text-4xl font-medium text-white text-center mb-5 sm:mb-7 tracking-normal">
             Step into the world of
           </h2>
-          {/* 
-          <img 
-            src="/images/home/SBN.png" 
-            alt="SHEBN Logo" 
-            className="h-20 sm:h-50 w-auto" 
-            loading="lazy"
-          />*/}
+          
           {/* Texto SHEBN con efecto de superposición */}
           <div class="relative">
-              <h3 class="text-7xl md:text-9xl font-black text-shadow-3d letter-overlap">
-                  <span class="bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent">
+              <p className="text-5xl md:text-8xl font-black text-shadow-3d letter-overlap">
+                  <span class="bg-white bg-clip-text text-transparent">
                       SHEBN
                   </span>
-              </h3>
-              
+              </p>
               {/* Efecto de sombra detrás  */}
-              <h3 class="text-7xl md:text-9xl font-black absolute top-2 left-2 -z-10 letter-overlap opacity-40">
+              <h3 class="text-5xl md:text-8xl font-black absolute top-2 left-2 -z-10 letter-overlap opacity-40">
                   <span class="text-gray-800">SHEBN</span>
               </h3>
           </div>

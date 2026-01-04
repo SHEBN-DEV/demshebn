@@ -17,8 +17,8 @@ const Projects = () => {
             </div>
 
             {/* bloque 2 */}
-            <div className="flex-1 w-full py-2">
-                <div className="w-full px-4 md:px-6 lg:px-0 xl:w-5/6 mx-auto">
+            <div className="w-full flex flex-col py-2">
+                <div className="w-full px-4 md:px-6 lg:px-10 xl:w-full">
                     <Discover />
                     <p className="text-2xl font-bold my-4 mt-2 lg:mt-4">Trending</p>
                     <TrendingCards />
