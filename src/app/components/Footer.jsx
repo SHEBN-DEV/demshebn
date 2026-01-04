@@ -23,15 +23,17 @@ const Footer = () => {
           <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
             <FaInstagram className="hover:text-black transition" />
           </a>
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-            <FaFacebookF className="hover:text-black transition" />
-          </a>
           <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
             <FaXTwitter className="hover:text-black transition" />
+          </a>
+          {/* 
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+            <FaFacebookF className="hover:text-black transition" />
           </a>
           <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer">
             <FaWhatsapp className="hover:text-black transition" />
           </a>
+          */}
         </div>
       </div>
     </footer>

@@ -82,10 +82,8 @@ const Navbar = () => {
 
   const navLinks = [
     { label: "Home", href: "/" },
-    { label: "Profiles", href: "/profileFriends" },
-    { label: "Projects", href: "/Projects" },
-    { label: "Apply", href: "/apply" },
-    { label: "Forum", href: "/forum" },
+    { label: "Messages", href: "/message" },
+    { label: "Profile", href: "/profileFriends" },
     { label: "Contact us", href: "/contact", special: true },
   ];
 
