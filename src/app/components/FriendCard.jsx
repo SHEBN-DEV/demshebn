@@ -34,7 +34,7 @@ const FriendCard = () => {
     const getFriendsPerPage = () => {
         if (screenSize.width < 640) return 2;    // móvil: 2 amigos
         if (screenSize.width < 1024) return 3;   // tablet: 3 amigos
-        return 4;                                // desktop: 4 amigos
+        return 3;                                // desktop: 4 amigos
     };
 
     const friendsPerPage = getFriendsPerPage();
@@ -85,22 +85,23 @@ const FriendCard = () => {
             )}
             
             {/* Grid responsive que se adapta al layout de la página */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-6">
                 {visibleFriends.map(friend => (
                     <div 
                         key={friend.id}
-                        className="flex flex-col items-center text-center">
+                        className="flex flex-col items-center">
                         
                         {/* Imagen principal */}
                         <img 
                             src={friend.image} 
                             alt={friend.name}
-                            className="size-20 md:size-24 rounded-full mb-3 md:mb-4 object-cover"
+                            className="size-30 md:size-36 rounded-full mb-3 md:mb-4 object-cover"
                             loading="lazy"
                         />
+                        
 
                         {/* Información */}
-                        <div className="flex items-center justify-center mb-2 w-full">
+                        <div className="flex items-start w-full">
                             <img 
                                 src={friend.image} 
                                 alt={`avatar ${friend.name}`}
@@ -109,11 +110,11 @@ const FriendCard = () => {
                             />
                             <p className="text-xs sm:text-sm font-semibold pl-2 truncate">{friend.name}</p>
                         </div>
-                        <p className="text-xs mb-2 px-1">{friend.role} + {friend.status}</p>
+                        <p className="w-full text-[10px] px-7 items-start">{friend.role} + {friend.status}</p>
                         
                         {/* Botón ver perfil*/}
-                        <button className="flex items-center justify-center w-fit hover:opacity-80 transition-opacity group/profile mx-auto">
-                            <p className="text-xs text-[#ff29d7] pr-1">See Profile</p>
+                        <button className="w-full px-7 flex hover:opacity-80 transition-opacity group/profile mx-auto">
+                            <p className="text-[10px] text-[#ff29d7] pr-1">See Profile</p>
                             <IoIosArrowDroprightCircle className="fill-[#ff29d7] size-4 group-hover/profile:translate-x-0.5 transition-transform"/> 
                         </button>
                     </div>
